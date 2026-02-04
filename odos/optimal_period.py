@@ -236,7 +236,7 @@ class UnknownPeriodPlanet():
             indx = (obs['time'] > tmid[0] - self.transit_duration - 1/24) * (obs['time'] < tmid[0] + self.transit_duration + 1/24)
             time = obs['time'][indx] - tmid[0]
             flux = obs['flux'][indx]/np.mean(obs['flux'][indx])
-            ax.scatter(time, flux, s = 1, alpha = 0.8, label = 'Midtime {:.5f}, {}'.format(tmid[0], obs['plot_label']))
+            ax.scatter(time, flux, s = 10, alpha = 0.8, label = 'Midtime {:.5f}, {}'.format(tmid[0], obs['plot_label']))
         plt.legend()
 
                     

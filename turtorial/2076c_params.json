@@ -1,0 +1,11 @@
+{
+    "period":189.12762,
+    "period_err":0.0000255,
+    "mid_time":2458748.69458,
+    "mid_time_err":0.0005,
+    "transit_duration":0.12,
+    "transit_depth": 2066,
+    "RA":217.392016,
+    "DEC":39.790399
+
+}

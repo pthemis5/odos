@@ -3,12 +3,7 @@ ODOS
 ========================
 
 
-A package that very simply simulates duo (or more) transiting systems, calculates each possible period probability, in order to find the best observation times, both from ground based, and space telescopes. 
+A package that very simply simulates duo (or more) transiting planets, which are planets that have observations through transits, but their period is not resolved beause of haps in their observations. 
 
-
-
-Features
---------
-
-* TODO
+The pagkage simply calculates each possible period probability, in order to find the best observation times, both from ground based, and space telescopes. 
 
