@@ -390,7 +390,7 @@ class UnknownPeriodPlanet():
     def setup_possible_periods(self, df = None):
         if df is None:
             df = self.all_possible_periods_df
-            print('all the periods will be used for the calculation, if not provide a dataframe')
+            # print('all the periods will be used for the calculation, if not provide a dataframe')
         
         df.reset_index(drop = True, inplace = True)
         self.possible_periods_values = np.array(df['period'].values)
@@ -502,7 +502,6 @@ class UnknownPeriodPlanet():
 
 
         N_init = len(p)
-        print(N_init)
         N_is_transit = np.array([])
         N_no_transit = np.array([])
         prob_is_transit = np.array([])
@@ -552,7 +551,7 @@ class UnknownPeriodPlanet():
         #define observer and target
         star_coordinates = SkyCoord(ra = star_ra*u.deg, dec = star_dec*u.deg)
         target = FixedTarget(star_coordinates, name=self.name)
-        print('RA = {} degrees, dec = {} degrees, I hope you didnt mess up'.format(star_coordinates.ra, star_coordinates.dec))
+        print('RA = {} degrees, dec = {} degrees.'.format(star_coordinates.ra, star_coordinates.dec))
         self.star_coordinates = star_coordinates
         self.target = target
 
@@ -605,8 +604,8 @@ class UnknownPeriodPlanet():
         observ_start = Time(datetime.strptime(obs_start_end[0], "%Y-%m-%d")).jd
         observ_end = Time(datetime.strptime(obs_start_end[1], "%Y-%m-%d")).jd
 
-        print('Observation start JD: ', observ_start)
-        print('Observation end JD: ', observ_end)
+        # print('Observation start JD: ', observ_start)
+        # print('Observation end JD: ', observ_end)
 
        
         midtime_reference = self.reference_midtime[0]
@@ -645,7 +644,7 @@ class UnknownPeriodPlanet():
                     if self.prob_is_transit[ii] > prob_obs_transit[indx]:
                         prob_obs_transit[indx] = self.prob_is_transit[ii]
         
-        print(f_midtimes)
+        # print(f_midtimes)
 
         ##################################
         ###### this time converstion i probably do not like......keep it in mind for improovemnt
@@ -718,9 +717,8 @@ class UnknownPeriodPlanet():
 
         for k,observatory in enumerate(self.observatories):
             tt = []
-            print(len(full_transits[k]))
+            # print(len(full_transits[k]))
             for kk in range(len(full_transits[k])):
-                print(kk)
                 if full_transits[k][kk] == 1:
                     tt.append('full')
                     continue
@@ -735,8 +733,6 @@ class UnknownPeriodPlanet():
                     continue
                 else:
                     tt.append(0)
-            print(tt)
-            print(len(tt))
             self.all_transits_df[observatory.name] = tt
 
 
@@ -811,7 +807,6 @@ class UnknownPeriodPlanet():
         ### and the number of times we check depends on the N observations we will make
         ###
         for i in range(N_observations):
-            print(i)
             best_comb1 = []
             best_indx1 = [i]
             for j in range(N_observations - 1):
