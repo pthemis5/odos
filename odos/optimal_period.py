@@ -702,12 +702,12 @@ class UnknownPeriodPlanet():
     def observable_transits_multiple_periods(self, min_h_horizon, min_moon_separation):
         self.all_transits_df.reset_index(drop = True, inplace = True)
 
-        times_start =  Time(self.all_transits_df['midtimes (BJD)'].values + self.transit_duration*9/10, format = 'jd')
-        times_end =  Time(self.all_transits_df['midtimes (BJD)'].values + self.transit_duration*11/10, format = 'jd')
+        times_start =  Time(self.all_transits_df['midtimes (BJD)'].values + self.transit_duration*8/20, format = 'jd')
+        times_end =  Time(self.all_transits_df['midtimes (BJD)'].values + self.transit_duration*12/20, format = 'jd')
         egress = self._observable_transits_multiple_periods(min_h_horizon, min_moon_separation, times_start, times_end)
 
-        times_start =  Time(self.all_transits_df['midtimes (BJD)'].values - self.transit_duration*11/10, format = 'jd')
-        times_end =  Time(self.all_transits_df['midtimes (BJD)'].values - self.transit_duration*9/10, format = 'jd')
+        times_start =  Time(self.all_transits_df['midtimes (BJD)'].values - self.transit_duration*12/20, format = 'jd')
+        times_end =  Time(self.all_transits_df['midtimes (BJD)'].values - self.transit_duration*8/20, format = 'jd')
         ingress = self._observable_transits_multiple_periods(min_h_horizon, min_moon_separation, times_start, times_end)
 
         times_start = self.all_transits_df['start_obs'].values
@@ -745,7 +745,7 @@ class UnknownPeriodPlanet():
             is_observable.append([])
         for i in self.all_transits_df.index:
             for k,observatory in enumerate(self.observatories):
-                aa = is_always_observable(constraints, observatory, self.target, time_range=[times_start[i], times_end[i]])
+                aa = is_always_observable(constraints, observatory, self.target, time_range=[times_start[i], times_end[i]], time_grid_resolution=5*u.minute)
                 is_observable[k].append(aa[0])
 
         return is_observable
